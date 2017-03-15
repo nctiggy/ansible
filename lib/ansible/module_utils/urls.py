@@ -99,7 +99,7 @@ this code instead.
 import netrc
 import os
 import re
-import sys
+import sys:
 import socket
 import platform
 import tempfile
@@ -778,13 +778,17 @@ def maybe_add_ssl_handler(url, validate_certs):
 def open_url(url, data=None, headers=None, method=None, use_proxy=True,
              force=False, last_mod_time=None, timeout=10, validate_certs=True,
              url_username=None, url_password=None, http_agent=None,
-             force_basic_auth=False, follow_redirects='urllib2'):
+             force_basic_auth=False, follow_redirects='urllib2',
+             enable_cookies=False):
     '''
     Sends a request via HTTP(S) or FTP using urllib2 (Python2) or urllib (Python3)
 
     Does not require the module environment
     '''
     handlers = []
+    if enable_cookies:
+        try:
+            handlers.append(urllib_request.HTTPCookieProcessor)
     ssl_handler = maybe_add_ssl_handler(url, validate_certs)
     if ssl_handler:
         handlers.append(ssl_handler)
