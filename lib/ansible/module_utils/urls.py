@@ -99,7 +99,7 @@ this code instead.
 import netrc
 import os
 import re
-import sys:
+import sys
 import socket
 import platform
 import tempfile
